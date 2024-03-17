@@ -33,7 +33,7 @@ int main()
 
 ll int highest(ll int N, ll int D, string num)
 {
-    sort(num, num + 1);
+    // sort(num, num + 1);
     for(int i = 0 ; i < N ; i++)
     {
         
