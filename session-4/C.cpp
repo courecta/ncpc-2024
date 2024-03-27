@@ -1,5 +1,5 @@
 #include <iostream>
-#include <unordered_map>
+#include <map>
 #include <string>
 using namespace std;
 #define ll unsigned long long
@@ -16,20 +16,25 @@ int main()
     ll n = 0, x = 0;
     cin >> n >> x;
     ++n;
-    ll array[n];
+    ll array[n + 1];
     for( ll i = 1; i < n ; ++i) cin >> array[i];
     cout << sum(n,x,array) << nl;
 }
 
 string sum(ll n, ll x, ll array[])
 {
-    unordered_map <int, int> hashmap;
+    map <int, int> hashmap;
     ll complement = 0;
     for(ll i = 1 ; i < n ; ++i)
     {
         complement = x - array[i];
         auto it = hashmap.find(complement); 
-        if(it != hashmap.end()) return to_string(it->second) + " " + to_string(i);
+        if(it != hashmap.end())
+        {
+            string str1 = to_string(i);
+            string str2 = to_string(it->second);
+            return str2 + " " + str1;
+        }
         hashmap.insert({array[i], i});
     }
     return im;
